@@ -33,13 +33,49 @@ int main()
 	cout << &ZahlenListe[8] << endl;
 	cout << &ZahlenListe[9] << endl;
 
+
+	// Wiederholung Zeiger auf dem Stack / Stapel
+
+	// Variable auf den Stack anlegen
+	int Zahl = 10;
+
+	// Zeiger auf diese Zahl / Adresse der Zahl
+	int* ZeigerAufZahl = &Zahl;
+
+
+	// Wert der zahl überschreiben durch den Zeiger (Dereferzierung)
+	*ZeigerAufZahl = 11;
+
+
+	////////// Arbeiten mit dem Heap-Speicher / Haufenspeicher
+	// new = Reservieren von Speicher auf dem Heap mit Angabe des Datentyps
+	// Reservieren von 4 byte da integer 4 Bytes groß ist (auf diesem System)
+	int* ZeigerAufHaufenZahl = new int;
+
+
+	*ZeigerAufHaufenZahl = 22;
+	cout << *ZeigerAufHaufenZahl << endl;
+
+	// Speicher manuell überschreiben
+	*ZeigerAufHaufenZahl = 0;
+
+
+	// Speicher wieder freigeben
+	delete ZeigerAufHaufenZahl;
+
+
+
+
+
+
+	// Benutzereingabe zum Festlegen der Groese eines Arrays
+
 	int AnzahlElemente = 0;
-	int* DynListe = 0;
 
 	cout << "Wie gross soll das Array sein?: ";
 	cin >> AnzahlElemente;
 
-	DynListe = new int [AnzahlElemente];
+	int* DynListe  = new int[AnzahlElemente];
 
 	for (int i = 0; i < AnzahlElemente; i++)
 	{
@@ -51,7 +87,10 @@ int main()
 		cout << DynListe[i] << endl;
 	}
 
-	delete DynListe;
+	// Freigabe des Speichers mit delete mit Klammer!
+	delete[] DynListe;
+
+
 
 
 	system("pause");
